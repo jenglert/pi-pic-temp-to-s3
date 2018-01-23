@@ -4,7 +4,7 @@ set -x
 
 temp_and_humidity=$(/usr/bin/python /home/pi/pi-pic-temp-to-s3/dht22.py)
 
-file_path=$(raspistill -o "/tmp/pic-%d-$temp_and_humidity.jpg" -ts -q 8 -h 1080 -w 1280 -v -vf 2>&1 | grep "Opening output file " | awk '{ gsub(/Opening output file /, ""); print }')
+file_path=$(raspistill -o "/tmp/pic-%d-$temp_and_humidity.jpg" -ts -q 8 -h 1080 -w 1280 -v 2>&1 | grep "Opening output file " | awk '{ gsub(/Opening output file /, ""); print }')
 
 file=$(echo $file_path | awk '{gsub("/tmp/", ""); print}')
 
